@@ -1,9 +1,5 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        mapp = {}
-        for i, n in enumerate(nums):
-            diff = target - n
-            if diff in mapp:
-                return [mapp[diff], i]
-            mapp[n] = i
-        return
+        for i in range(len(nums)):
+            if target-nums[i] in nums[i+1:]:
+                return [i, nums.index(target-nums[i], i+1)]
