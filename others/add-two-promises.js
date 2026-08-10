@@ -5,9 +5,12 @@
  * @param {Promise} promise2
  * @return {Promise}
  */
-var addTwoPromises = async function(promise1, promise2) {
-    const [num1, num2] = await Promise.all([promise1, promise2])
-    return num1 + num2;
+var addTwoPromises = function(promise1, promise2) {
+    return new Promise((resolve) => {
+        Promise.all([promise1, promise2]).then(([num1, num2]) => {
+            resolve(num1 + num2);
+        });
+    });
 };
 
 /**
